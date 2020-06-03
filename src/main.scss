@@ -1,0 +1,57 @@
+$rems: (0, 1, 2, 3, 4, 5);
+$sides: (top, bottom, left, right, x, y);
+
+@each $rem in $rems {
+  @each $side in $sides {
+    .m#{str-slice($side, 0, 1)}-#{$rem} {
+      @if $side == x {
+        margin-left: #{$rem}rem;
+        margin-right: #{$rem}rem;
+      } @else if $side == y {
+        margin-top: #{$rem}rem;
+        margin-bottom: #{$rem}rem;
+      } @else {
+        margin-#{$side}: #{$rem}rem;
+      }
+    }
+
+    .m-#{$rem} {
+      margin: #{$rem}rem;
+    }
+
+    .p#{str-slice($side, 0, 1)}-#{$rem} {
+      @if $side == x {
+        padding-left: #{$rem}rem;
+        padding-right: #{$rem}rem;
+      } @else if $side == y {
+        padding-top: #{$rem}rem;
+        padding-bottom: #{$rem}rem;
+      } @else {
+        padding-#{$side}: #{$rem}rem;
+      }
+    }
+
+    .p-#{$rem} {
+      padding: #{$rem}rem;
+    }
+  }
+}
+
+html {
+  background: #f5f5f5;
+  max-width: 1024px;
+  margin: 0 auto;
+  body {
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
+    padding: 1.25rem;
+    margin: 3rem 0;
+    @media all and (max-width: 1024px) {
+      border-radius: 0;
+      box-shadow: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
